@@ -1,7 +1,7 @@
 // set up an object to hold all of our results
 // note: we could do this with individual variables and arrays too
 //       this is just one approach!!!
-var results = {
+let results = {
   total: 0,
   1: 0,
   2: 0,
@@ -14,8 +14,8 @@ var results = {
 };
 
 // figure out what time it is
-var today = new Date();
-var hour = today.getHours();
+let today = new Date();
+let hour = today.getHours();
 if (hour > 6 && hour < 12) {
   document.write('<h3>Good Morning!</h3>');
 }
@@ -27,10 +27,10 @@ else {
 }
 
 // loop 100 times
-for (var i = 0; i < 100; i++) {
+for (let i = 0; i < 100; i++) {
   // generate a random number between 1 and 6
-  var roll1 = parseInt( Math.random() * 6 + 1 );
-  var roll2 = parseInt( Math.random() * 6 + 1 );
+  let roll1 = parseInt( Math.random() * 6 + 1 );
+  let roll2 = parseInt( Math.random() * 6 + 1 );
 
   // update total
   results.total += roll1;
@@ -51,8 +51,8 @@ for (var i = 0; i < 100; i++) {
   }
 
   // generate the correct image filename
-  var filename1 = 'images/dice-' + roll1 + '.png';
-  var filename2 = 'images/dice-' + roll2 + '.png';
+  let filename1 = 'images/dice-' + roll1 + '.png';
+  let filename2 = 'images/dice-' + roll2 + '.png';
 
   // write this image to the document
   document.write('<div>');

@@ -33,18 +33,18 @@ addTwoNumbers(5,10);
 
 // functions can return values as well, just as in other languages
 function subtractTwoNumbers(a,b) {
-  var answer = a - b;
+  let answer = a - b;
   return answer;
 }
 
-var difference = subtractTwoNumbers(10, 5);
+let difference = subtractTwoNumbers(10, 5);
 document.write("<p>The difference is: " + difference + "</p>");
 
 // function 'references' can be stored in variables.  in the following example
 // the variables 'q' and 'r' both refer to the 'fun2' function.  note how we
 // omit the parenthesis - we don't need them because we aren't calling the function
-var q = fun2;
-var r = fun2;
+let q = fun2;
+let r = fun2;
 
 // now we can call 'q' and 'r', but really we are just calling 'fun2'
 q();
@@ -56,7 +56,7 @@ r();
 
 // you can also create 'anonymous' functions - these functions are 'unnamed' and are
 // stored directly in a variable reference
-var anon1 = function() {
+let anon1 = function() {
   document.write("<p>I'm anonymous 1!</p>");
 }
 
@@ -68,7 +68,7 @@ anon1();
 /*
 anon2();
 
-var anon2 = function() {
+let anon2 = function() {
   document.write("<p>I'm anonymous 2!</p>");
 }
 */
