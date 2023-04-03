@@ -48,8 +48,7 @@
       $db = new SQLite3($path.'/to_do_list.db');
 
       // step 3: prepare a query to obtain the data from the database
-      // (note that you could use interpolation here if you wanted to use a variable
-      // instead of the string 'feed the cat')
+      // (note that you could use interpolation here if you wanted)
       $sql = 'SELECT id, title, status FROM items';
 
       // step 4: prepare a SQL statement object
