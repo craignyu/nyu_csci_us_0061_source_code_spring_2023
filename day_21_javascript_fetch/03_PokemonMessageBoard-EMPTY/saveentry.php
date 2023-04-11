@@ -19,8 +19,10 @@
   if ($text && $img) {
 
     // construct SQL to store this message
-    $sql = "INSERT INTO messages (avatar, message) VALUES ('$img', '$text')";
+    $sql = "INSERT INTO messages (avatar, message) VALUES (:img, :text)";
     $statement = $db->prepare($sql);
+    $statement->bindParam(':img', $img);
+    $statement->bindParam(':text', $text);
 
     // store the message
     $statement->execute();
