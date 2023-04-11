@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Promises</title>
+  </head>
+  <body>
+
+    <h1>Promises</h1>
+
+    <p>Check the console for output!</p>
+
+    <!-- custom application code -->
+    <script>
+
+        // a promise object allows you to wait for an asynchrous operation to complete
+        // we use promises in our code when working with resources that may take
+        // time to respond (e.g. contacting a server and waiting for a response.
+        // 
+        // promise objects require a single argument - an "executor" function. 
+        // this function takes two arguments - a function to run if the operation
+        // completes successfully (the 'resolve' function) and a function to run if the
+        // operation fails (the 'reject' function)
+        const demoPromise = new Promise( function(resolve, reject) {
+
+            console.log("Executor function is running");
+
+            // set a timeout to complete at some point in the future
+            setTimeout( function() {
+
+                // when the timeout completes we will pick a random number
+                const chance = Math.random();
+
+                // 50% of the time we will resolve the promise, and 50% of
+                // the time we will reject the promise
+                if (chance > 0.5) {
+                    resolve("Success!");
+                }
+                else {
+                    reject("Failure!");
+                }
+
+            }, 1000);
+
+        });
+
+        // now we can use our promise.  the 'then' chained function will
+        // handle the 'resolve' function, and the 'catch' chained function
+        // will handle the 'reject' function
+        demoPromise.then( function(result) {
+            console.log("The result is:", result);
+        }).catch( function(error) {
+            console.log("The error is:", error);
+        });
+
+    </script>
+
+  </body>
+</html>

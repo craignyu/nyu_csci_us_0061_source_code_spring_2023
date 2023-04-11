@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Fetch Basics</title>
+  </head>
+  <body>
+
+    <h1>Fetch Basics</h1>
+
+    <p>Check the console for output!</p>
+
+    <!-- custom application code -->
+    <script>
+
+        // let's create a simple convenience function that we can use to perform
+        // 'GET' requests without having to write out an awkward promise every time
+        function sendGetRequest(args) {
+            /*
+              'args' will be an object that looks like the following:
+
+              {
+                url: 'someURL.php',
+                data: {
+                  var1: value1,
+                  var2: value2,
+                  ... etc
+                },
+                success: function(data),
+                failure: function(error)
+              }
+
+            */
+
+            // package up our data into a single query string
+            const params = new URLSearchParams();
+            for (const varName in args.data) {
+              params.append(varName, args.data[varName]);
+            }
+
+            // append variables to URL
+            args.url += '?' + params.toString();
+
+            // perform the fetch request
+            fetch(args.url)
+              // this will run if we got some kind of response from the server
+              .then(function(result) {
+                // check to see if the result is OK
+                if (result.ok) {
+                  // use the result object to convert the response from the server to
+                  // plain text that we can use here on the front end
+                  return result.text();
+                }
+                else {
+                  // an error occured - let's bail out here!
+                  const error = new Error("Server error!");
+                  throw error;
+                }
+              })
+              // if we get into this next 'then' block then everything succeeded -
+              // we can call our 'success' callback function
+              .then(function(text) {
+                args.success(text);
+              })
+
+              // if we get into the 'catch' block then something failed
+              // we can call our 'error' callback function
+              .catch(function(error) {
+                args.error(error);
+              });
+
+        }
+
+
+
+        
+
+        // now we can easily call our convenience function every time we want to make 
+        // a request to the server
+        sendGetRequest({
+          url: 'datasource3_getvars.php',
+          data: {
+            message: 'HelloThere!'
+          },
+          success: function(data) {
+            console.log("It worked! The server sent back:", data);
+          },
+          error: function(err) {
+            console.log("Something went wrong! The error was:", err);
+          }
+        })
+
+
+    </script>
+
+  </body>
+</html>

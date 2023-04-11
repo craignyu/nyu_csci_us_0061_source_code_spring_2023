@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Fetch Basics</title>
+  </head>
+  <body>
+
+    <h1>Fetch Basics</h1>
+
+    <p>Check the console for output!</p>
+
+    <!-- custom application code -->
+    <script>
+
+
+        // in this example we are sending some 'GET' variables to the server
+        fetch('datasource3_getvars.php?message=HelloWorld!')
+          // this function runs if the server responded successfully
+          .then(function(result) {
+            console.log("Call #1 - Result:", result);
+
+            // check to see if the result is OK
+            if (result.ok) {
+              // use the result object to convert the response from the server to
+              // plain text that we can use here on the front end
+              return result.text();
+            }
+            else {
+              // an error occured - let's bail out here!
+              const error = new Error("Server error!");
+              throw error;
+            }
+          })
+
+          // this function runs after the successful function returns a result
+          .then(function(text) {
+            console.log("Call #1 - Text:", text);
+          })
+
+          // this function runs if the server did not respond successfully
+          .catch(function(error) {
+            console.log("Call #1 - Error:", error);
+          });
+
+
+    </script>
+
+  </body>
+</html>
