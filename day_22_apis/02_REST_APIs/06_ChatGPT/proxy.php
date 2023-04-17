@@ -38,6 +38,12 @@
     );
     
     // make the request to the API and wait for a response
+    // "CURL" stands for "Client URL" and is used to perform network calls
+    // to resources on other servers.  you can think of this like PHP's way
+    // of making a fetch request to another server.  PHP "blocks" when making
+    // a CURL request, so the program will pause to wait for a response from
+    // the Open AI API before continuing (unlike JavaScript which handles these
+    // kinds of requests asynchronously)
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
