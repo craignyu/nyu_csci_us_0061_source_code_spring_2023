@@ -1,0 +1,11 @@
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <h1>{{title}}</h1>
+    <p>Welcome to {{title}}!</p>
+    <p>Your lucky number is {{num}}</p>
+  </body>
+</html>
+

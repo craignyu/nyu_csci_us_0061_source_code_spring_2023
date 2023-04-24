@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>In-Memory Variables</title>
+  </head>
+  <body>
+    <h1>In-Memory Variables</h1>
+    <form method="POST" action="/savename">
+        Name: <input type="text" name="pokemon">
+        <input type="submit">
+    </form>
+    <p>In total this page has been loaded {{counter}} times</p>
+    <ul>
+        {{#pokemon}}
+            <li>{{name}}</li>
+        {{/pokemon}}
+    </ul>
+  </body>
+</html>
+
